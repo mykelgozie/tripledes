@@ -11,6 +11,7 @@ namespace TripleDes
       
         private const string mysecurityKey = "15EA4CA20131C2FDDF2C13102AC4AE51";
 
+        // first encription
         public static string Encrypt(string TextToEncrypt)
         {
             byte[] MyEncryptedArray = UTF8Encoding.UTF8
@@ -62,11 +63,6 @@ namespace TripleDes
             byte[] keyArray;
             byte[] toEncryptArray = UTF8Encoding.UTF8.GetBytes(toEncrypt);
 
-          
-           
-          
-              
-
             TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
 
             MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
@@ -93,18 +89,12 @@ namespace TripleDes
             tdes.Clear();
             //Return the encrypted data into unreadable string format
 
-            string word = "";
-            foreach (var item in resultArray)
-            {
-
-                word += item;
-
-            }
-
-
-            return word;
+            var byteString =  ByteArrayToHexString(resultArray);
+            return ConvertToBase64String(byteString);
         }
 
+
+        // convert to string 
         public static string ByteArrayToHexString(byte[] ba)
         {
             StringBuilder hex = new StringBuilder(ba.Length * 2);
@@ -113,6 +103,8 @@ namespace TripleDes
             return hex.ToString();
         }
 
+
+        // convert to base64 string 
 
         public static string ConvertToBase64String(string text)
         {
