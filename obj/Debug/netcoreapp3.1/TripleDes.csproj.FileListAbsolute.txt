@@ -1,0 +1,13 @@
+C:\Users\MICHAEL NWOSU C\source\repos\TripleDes\bin\Debug\netcoreapp3.1\TripleDes.exe
+C:\Users\MICHAEL NWOSU C\source\repos\TripleDes\bin\Debug\netcoreapp3.1\TripleDes.deps.json
+C:\Users\MICHAEL NWOSU C\source\repos\TripleDes\bin\Debug\netcoreapp3.1\TripleDes.runtimeconfig.json
+C:\Users\MICHAEL NWOSU C\source\repos\TripleDes\bin\Debug\netcoreapp3.1\TripleDes.runtimeconfig.dev.json
+C:\Users\MICHAEL NWOSU C\source\repos\TripleDes\bin\Debug\netcoreapp3.1\TripleDes.dll
+C:\Users\MICHAEL NWOSU C\source\repos\TripleDes\bin\Debug\netcoreapp3.1\TripleDes.pdb
+C:\Users\MICHAEL NWOSU C\source\repos\TripleDes\obj\Debug\netcoreapp3.1\TripleDes.csprojAssemblyReference.cache
+C:\Users\MICHAEL NWOSU C\source\repos\TripleDes\obj\Debug\netcoreapp3.1\TripleDes.AssemblyInfoInputs.cache
+C:\Users\MICHAEL NWOSU C\source\repos\TripleDes\obj\Debug\netcoreapp3.1\TripleDes.AssemblyInfo.cs
+C:\Users\MICHAEL NWOSU C\source\repos\TripleDes\obj\Debug\netcoreapp3.1\TripleDes.csproj.CoreCompileInputs.cache
+C:\Users\MICHAEL NWOSU C\source\repos\TripleDes\obj\Debug\netcoreapp3.1\TripleDes.dll
+C:\Users\MICHAEL NWOSU C\source\repos\TripleDes\obj\Debug\netcoreapp3.1\TripleDes.pdb
+C:\Users\MICHAEL NWOSU C\source\repos\TripleDes\obj\Debug\netcoreapp3.1\TripleDes.genruntimeconfig.cache
