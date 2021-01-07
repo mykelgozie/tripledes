@@ -12,61 +12,20 @@ namespace TripleDes
         private const string mysecurityKey = "15EA4CA20131C2FDDF2C13102AC4AE51";
 
         // first encription
-        public static string Encrypt(string TextToEncrypt)
-        {
-            byte[] MyEncryptedArray = UTF8Encoding.UTF8
-               .GetBytes(TextToEncrypt);
+      
 
-            MD5CryptoServiceProvider MyMD5CryptoService = new
-               MD5CryptoServiceProvider();
-
-            byte[] MysecurityKeyArray = MyMD5CryptoService.ComputeHash
-               (UTF8Encoding.UTF8.GetBytes(mysecurityKey));
-
-           // MyMD5CryptoService.Clear();
-
-            var MyTripleDESCryptoService = new
-               TripleDESCryptoServiceProvider();
-            MyTripleDESCryptoService.BlockSize = 64;
-            MyTripleDESCryptoService.Key = MysecurityKeyArray;
-            MyTripleDESCryptoService.Padding = PaddingMode.None;
-            MyTripleDESCryptoService.Mode = CipherMode.ECB;
-          
-
-
-            var MyCrytpoTransform = MyTripleDESCryptoService
-               .CreateEncryptor();
-
-            byte[] MyresultArray = MyCrytpoTransform
-               .TransformFinalBlock(MyEncryptedArray, 0,
-               MyEncryptedArray.Length);
-
-            // MyTripleDESCryptoService.Clear();
-
-
-            string word = "";
-            foreach (var item in MyresultArray)
-            {
-
-                word += item;
-
-            }
-
-
-            return word;
-
-        }
-
-
-        public static string Encrypt2(string toEncrypt)
+        public static string Encrypt(string toEncrypt)
         {
             byte[] keyArray;
-            byte[] toEncryptArray = UTF8Encoding.UTF8.GetBytes(toEncrypt);
+          
+            byte[] toEncryptArray = StringToByteArray(toEncrypt);
 
             TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
 
+
             MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
-            keyArray = hashmd5.ComputeHash(UTF8Encoding.UTF8.GetBytes(mysecurityKey));
+           
+            keyArray = StringToByteArray(mysecurityKey);
             //Always release the resources and flush data
             // of the Cryptographic service provide. Best Practice
 
@@ -79,6 +38,7 @@ namespace TripleDes
             //padding mode(if any extra byte added)
 
             tdes.Padding = PaddingMode.None;
+            
 
             ICryptoTransform cTransform = tdes.CreateEncryptor();
             //transform the specified region of bytes array to resultArray
@@ -89,10 +49,20 @@ namespace TripleDes
             tdes.Clear();
             //Return the encrypted data into unreadable string format
 
-            var byteString =  ByteArrayToHexString(resultArray);
-            return ConvertToBase64String(byteString);
+           var hexString = ByteArrayToHexString(resultArray);
+
+           return  ConvertToBase64String(hexString.ToUpper());
         }
 
+
+        public static byte[] StringToByteArray(String hex)
+        {
+            int NumberChars = hex.Length;
+            byte[] bytes = new byte[NumberChars / 2];
+            for (int i = 0; i < NumberChars; i += 2)
+                bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
+            return bytes;
+        }
 
         // convert to string 
         public static string ByteArrayToHexString(byte[] ba)
@@ -108,10 +78,8 @@ namespace TripleDes
 
         public static string ConvertToBase64String(string text)
         {
-
-          var bytesText =  Encoding.Unicode.GetBytes(text.ToUpper());
-
-          return  Convert.ToBase64String(bytesText);
+            var byteString = Encoding.UTF8.GetBytes(text);
+          return   Convert.ToBase64String(byteString);
         }
     }
 }
